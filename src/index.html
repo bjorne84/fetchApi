@@ -4,25 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scss/styles.css">
-    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <title>REST Api - with PHP</title>
 </head>
 <body>
-    <header></header>
+    <header>
+        <h1>REST Api - with PHP</h1>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </header>
     <main>
-        <h1>Test</h1>
-        <a href="">länk</a>
-        <button id="btn">Get text</button>
-        <button id="btn2">Get users</button>
-        <button id="btn3">Get posts</button>
-        <button id="btn4">Get people</button>
-        <div id="outText"></div>
-        <div id="output"></div>
-        <div id="output2"></div>
-        <div id="output3"></div>
-
+        <p>Add a new Course to database</p>
+        <form class="forms" id="formCreate" method="POST" enctype="multipart/form-data">
+            <!--fält för formulär, hela den grå delen-->
+            <fieldset id="field">
+                <p class="pfield"></p>
+                <label for="code">Code:</label><br>
+                <input type="text" name="code" id="codce" class="input">
+                <br>
+                <label for="name">Name:</label><br>
+                <input type="text" name="name" id="name" class="input">
+                <br>
+                <label for="progression">Progression:</label><br>
+                <input type="text" name="progression" id="progression" class="input">
+                <br>
+                <label for="kursplan">Course syllabus:</label><br>
+                <input type="text" name="kursplan" id="kursplan" class="input"><br>
+                <div class="btn-wrapper">
+                    <button type="submit" name="submitPost" id="btn-create" class="btn btn2">Publish</button>
+                    <button type="reset" name="deletePost" id="btn-reset" class="btn btn2 btn-reset">Delete
+                        field</button>
+                </div>
+            </fieldset>
+        </form>
+        <div id="grafikDiv">
+            <h1 class="ml10 whiteText">
+                <span class="text-wrapper">
+                    <span class="letters">Your saved Courses</span>
+                </span>
+            </h1>
+        </div>
+        <p>Update and delete courses</p>
+        <div id="courses">
+            <form class="forms forms2"  method="POST" enctype="multipart/form-data">
+                <!--fält för formulär, hela den grå delen-->
+                <fieldset class="field">
+                    <label for="name">Name:</label><br>
+                    <input type="text" name="name" id="name" class="input">
+                    <label for="code">Code:</label><br>
+                    <input type="text" name="code" id="codce" class="input">
+                    <br>
+                    <label for="progression">Progression:</label><br>
+                    <input type="text" name="progression" id="progression" class="input">
+                    <br>
+                    <label for="kursplan">Course syllabus:</label><br>
+                    <input type="text" name="kursplan" id="kursplan" class="input"><br>
+                    <div class="btn-wrapper">
+                        <button type="submit" name="submitPost" id="btn-create" class="btn btn2">Publish</button>
+                        <button type="reset" name="deletePost" id="btn-reset" class="btn btn2 btn-reset">Delete
+                            field</button>
+                    </div>
+                </fieldset>
+            </form>
+            <form class="forms forms2"  method="POST" enctype="multipart/form-data">
+                <!--fält för formulär, hela den grå delen-->
+                <fieldset class="field">
+                    <label for="name">Name:</label><br>
+                    <input type="text" name="name" id="name" class="input">
+                    <label for="code">Code:</label><br>
+                    <input type="text" name="code" id="codce" class="input">
+                    <br>
+                    <label for="progression">Progression:</label><br>
+                    <input type="text" name="progression" id="progression" class="input">
+                    <br>
+                    <label for="kursplan">Course syllabus:</label><br>
+                    <input type="text" name="kursplan" id="kursplan" class="input"><br>
+                    <div class="btn-wrapper">
+                        <button type="submit" name="submitPost" id="btn-create" class="btn btn2">Publish</button>
+                        <button type="reset" name="deletePost" id="btn-reset" class="btn btn2 btn-reset">Delete
+                            field</button>
+                    </div>
+                </fieldset>
+            </form>
+            <form class="forms forms2"  method="POST" enctype="multipart/form-data">
+                <!--fält för formulär, hela den grå delen-->
+                <fieldset class="field">
+                    <label for="name">Name:</label><br>
+                    <input type="text" name="name" id="name" class="input">
+                    <label for="code">Code:</label><br>
+                    <input type="text" name="code" id="codce" class="input">
+                    <br>
+                    <label for="progression">Progression:</label><br>
+                    <input type="text" name="progression" id="progression" class="input">
+                    <br>
+                    <label for="kursplan">Course syllabus:</label><br>
+                    <input type="text" name="kursplan" id="kursplan" class="input"><br>
+                    <div class="btn-wrapper">
+                        <button type="submit" name="submitPost" id="btn-create" class="btn btn2">Publish</button>
+                        <button type="reset" name="deletePost" id="btn-reset" class="btn btn2 btn-reset">Delete
+                            field</button>
+                    </div>
+                </fieldset>
+            </form>
+            <form class="forms forms2"  method="POST" enctype="multipart/form-data">
+                <!--fält för formulär, hela den grå delen-->
+                <fieldset class="field">
+                    <label for="name">Name:</label><br>
+                    <input type="text" name="name" id="name" class="input">
+                    <label for="code">Code:</label><br>
+                    <input type="text" name="code" id="codce" class="input">
+                    <br>
+                    <label for="progression">Progression:</label><br>
+                    <input type="text" name="progression" id="progression" class="input">
+                    <br>
+                    <label for="kursplan">Course syllabus:</label><br>
+                    <input type="text" name="kursplan" id="kursplan" class="input"><br>
+                    <div class="btn-wrapper">
+                        <button type="submit" name="submitPost" id="btn-create" class="btn btn2">Publish</button>
+                        <button type="reset" name="deletePost" id="btn-reset" class="btn btn2 btn-reset">Delete
+                            field</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </main>
-    <footer></footer>
-
+    <footer><h1 class="endh1 ml15">
+        <span class="word">The</span>
+        <span class="word">End...</span>
+      </h1>
+      </footer>
     <script src="js/main.js"></script>
 </body>
 </html>
