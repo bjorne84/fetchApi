@@ -1,4 +1,8 @@
-# Moment 4 BABEL
+# Moment 5 Fetch api JavaScript
+## Instruktioner
+För att sända in data så skriver du in kursnamn, kurskod OBS!
+Det ligger logik i rest-api, som testar kurskoden är 6 siffror långt.
+Progression kan enbart vara en bokstav.
 
 ## Automatiseringsprocess:
 Syftet är att förenkla processerna som man gör för alla webbprojekt. Det är exempelvis att minifiera filer, komprimera filer, slå samman filer. 
