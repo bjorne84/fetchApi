@@ -11,9 +11,12 @@ let createProg = document.getElementById('progression');
 let createLink = document.getElementById('kursplan');
 /*Händelselyssnare för formuläret, skapa ny kurs, lyssnar på klick, 
 riktar sig direkt till knapp-elementet*/
-formCreateEl.addEventListener('submit', createCourse());
+//formCreate.addEventListener('submit', createCourse());
 
-
+formCreateEl.addEventListener('submit', (e) => {
+    e.preventDefault(); // Förhindrar att sidan laddas om
+    createCourse();
+  });
 
 // Element för att läsa ut alla kurser, uppdatera och radera 
 let courseEl = document.getElementById('courses');
@@ -79,6 +82,7 @@ function createCourse() {
         .then(response => response.json())
         .then(data => {
             getCourse();
+            document.getElementById("formCreate").reset(); 
         })
         .catch(error => {
             console.log('Error: ', error)
