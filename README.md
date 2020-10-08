@@ -1,8 +1,8 @@
 # Moment 5 Fetch api JavaScript
+
 ## Instruktioner/om
-Sidan konsumerar ett RESTApi över kurser vi har läst. Det är byggt i php
-och ligger på följande address:
-http://webb01.se/REST_Api/
+Sidan konsumerar ett RESTApi över kurser vi har läst.
+Tjänsten finns på följande adress: http://webb01.se/fetch_api/pup/index.html
 
 #### Skapa ny kurs
 För att sända in data så skriver du in kursnamn, kurskod OBS!
