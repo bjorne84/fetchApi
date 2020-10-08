@@ -39,7 +39,8 @@ function getCourse() {
                 data.forEach(course => {
                     console.log(course);
                     courseEl.innerHTML +=
-                        `<form class="forms forms2" id="form-${course.Course_ID}" method="POST" enctype="multipart/form-data">
+                        `<div class="formwrapper">
+                        <form class="forms forms2" id="form-${course.Course_ID}" method="POST" enctype="multipart/form-data">
                         <fieldset class="field">
                             <label for="name">Name:</label><br>
                             <input type="text" name="name" class="input" placeholder="${course.Course_name}">
@@ -52,10 +53,15 @@ function getCourse() {
                             <a href="${course.Course_syllabus}">Länk till kursplan</a>
                         <div class="btn-wrapper">
                             <button type="submit" name="updatePost" id="btn-update-${course.Course_ID}" class="btn btn2">Update</button>
-                            <button type="reset" name="deletePost" id="btn-delete-${course.Course_ID}" class="btn btn2 btn-reset">Delete</button>
+                            <button type="submit" name="deletePost" id="btn-delete-${course.Course_ID}" class="btn btn2 btn-reset">Delete</button>
                         </div>
                         </fieldset>
-                    </form>`
+                    </form>
+                    <div class="btn-wrapper btn_wrapper2">
+                    <button type="submit" name="updateOutside" id="btn_up_${course.Course_ID}" class="btn btn2" onClick="updateCourse(${course.Course_ID}")">Update</button>
+                    <button id="btn_del_${course.Course_ID}" class="btn btn2 btn-reset" onClick="deleteCourse(${course.Course_ID})">Delete</button>
+                </div>
+                </div>`
                 })
             })
         )
@@ -87,7 +93,7 @@ function createCourse() {
             document.getElementById("formCreate").reset();
         })
         .catch(error => {
-            console.log('Error: ', error)
+            console.log('Error: ', error);
         })
 }
 
@@ -111,10 +117,24 @@ function getId() {
 
 
 // Raderar kurser
-function deleteCourse() {
+function deleteCourse(id) {
+    console.log("skriva ut" . id);
+    //preventDefault();
+    // Skapar objekt som innehåller kurs ID
+    let obj =  { "Course_ID": id };
+    /* Fetchar, skickar med metod delete och body med JSON-fil som 
+    görs av objektet*/
     fetch('http://webb01.se/REST_Api/', {
         method: 'DELETE',
-        body: JSON.stringify(course),
+        body: JSON.stringify(obj),
+    })
+    // Tar emot respons-data i JSON-format
+    .then(response => response.json())
+    // Laddar om kurslistan
+    .then(data => {
+        getCourse();
+    })
+    .catch(error => {
+        console.log('Error: ', error);
     })
 }
-
