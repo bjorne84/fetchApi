@@ -16,7 +16,7 @@ riktar sig direkt till knapp-elementet*/
 formCreateEl.addEventListener('submit', (e) => {
     e.preventDefault(); // Förhindrar att sidan laddas om
     createCourse();
-  });
+});
 
 // Element för att läsa ut alla kurser, uppdatera och radera 
 let courseEl = document.getElementById('courses');
@@ -39,7 +39,7 @@ function getCourse() {
                 data.forEach(course => {
                     console.log(course);
                     courseEl.innerHTML +=
-                    `<form class="forms forms2" id="form-${course.Course_ID}" method="POST" enctype="multipart/form-data">
+                        `<form class="forms forms2" id="form-${course.Course_ID}" method="POST" enctype="multipart/form-data">
                         <fieldset class="field">
                             <label for="name">Name:</label><br>
                             <input type="text" name="name" class="input" placeholder="${course.Course_name}">
@@ -67,11 +67,11 @@ function createCourse() {
     // Sparar variabler med värde från formuläret
     let name = createName.value;
     let code = createCode.value;
-    let prog = createProg .value;
+    let prog = createProg.value;
     let link = createLink.value;
 
     // Sparar ner det som ett objekt som sedan görs om till JSON-format
-    let course = {"Course_name": name, "Code": code, "Progression": prog, "Course_syllabus": link};
+    let course = { "Course_name": name, "Code": code, "Progression": prog, "Course_syllabus": link };
     console.log(course);
     //Skapar fetch-anrop
     fetch('http://webb01.se/REST_Api/', {
@@ -81,11 +81,40 @@ function createCourse() {
         //Vi kollar responsen, att anropet lyckats
         .then(response => response.json())
         .then(data => {
+            let message = data.Message;
+            document.getElementById("message_form").innerHTML = message;
             getCourse();
-            document.getElementById("formCreate").reset(); 
+            document.getElementById("formCreate").reset();
         })
         .catch(error => {
             console.log('Error: ', error)
         })
+}
+
+//Funktion för att starta eventlistners från ngn av formulären
+
+function getId() {
+    fetch('http://webb01.se/REST_Api/')
+        .then(response => response.json()
+            .then(data => {
+                data.forEach(course => {
+                    let id = course.Course_ID;
+                    let form = "form-";
+                    let totaldelbtn = form + id;
+                    totaldelbtn.addEventListener('submit', (e) => {
+                        e.preventDefault(); // Förhindrar att sidan laddas om
+                    });
+                })
+            })
+        )
+}
+
+
+// Raderar kurser
+function deleteCourse() {
+    fetch('http://webb01.se/REST_Api/', {
+        method: 'DELETE',
+        body: JSON.stringify(course),
+    })
 }
 
